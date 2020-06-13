@@ -3,6 +3,7 @@ class Admin extends CI_CONTROLLER{
     public function __construct(){
         parent::__construct();
         $this->load->model('Materi_model');
+        $this->load->model('Main_model');
         if($this->session->userdata('status') != "login"){
             $this->session->set_flashdata('login', 'Maaf, Anda harus login terlebih dahulu');
 			redirect(base_url("login"));
@@ -215,9 +216,12 @@ class Admin extends CI_CONTROLLER{
         public function edit_materi_produk(){
             $id = $this->input->post("id_materi");
             $data = [
-                "judul" => $this->input->post("judul", TRUE)
+                "judul" => $this->input->post("judul", TRUE),
+                "telegram" => $this->input->post("telegram", TRUE),
+                "link" => $this->input->post("link", TRUE)
             ];
-            $this->Materi_model->edit_materi_produk($id, $data);
+            // $this->Materi_model->edit_materi_produk($id, $data);
+            $this->Main_model->edit_data("materi_produk", ["id_materi" => $id], $data);
             $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">Berhasil mengubah materi<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             redirect($_SERVER['HTTP_REFERER']);
         }
@@ -319,8 +323,14 @@ class Admin extends CI_CONTROLLER{
         }
         
         public function add_materi_produk(){
-            $data['judul'] = $judul = $this->input->post("judul", TRUE);
-            $this->Materi_model->add_materi_produk($data);
+            $data = [
+                "judul" => $this->input->post("judul", TRUE),
+                "telegram" => $this->input->post("telegram", TRUE),
+                "link" => $this->input->post("link", TRUE)
+            ];
+
+            // $this->Materi_model->add_materi_produk($data);
+            $this->Main_model->add_data("materi_produk", $data);
             $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">Berhasil menambahkan materi produk<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             redirect($_SERVER['HTTP_REFERER']);
         }

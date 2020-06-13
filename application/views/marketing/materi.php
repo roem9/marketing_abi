@@ -8,11 +8,9 @@
                                 <li class="list-group-item d-flex justify-content-start">
                                     <?php if($title == 'Materi Marketing'):?>
                                         <a href="<?= base_url('marketing/videomaterimarketing/'.$materi['id_materi'])?>" class="btn btn-sm btn-danger mr-2"><i class="fa fa-video"></i> <span class="badge badge-info"><?= $materi['video']?></span></a>
-
                                         <a href="<?= base_url('marketing/ebookmaterimarketing/'.$materi['id_materi'])?>" class="btn btn-sm btn-success mr-2"><i class="fa fa-book"></i> <span class="badge badge-info"><?= $materi['buku']?></span></a>
                                     <?php else:?>
                                         <a href="<?= base_url('marketing/videomateriproduk/'.$materi['id_materi'])?>" class="btn btn-sm btn-danger mr-2"><i class="fa fa-video"></i> <span class="badge badge-info"><?= $materi['video']?></span></a>
-
                                         <a href="<?= base_url('marketing/ebookmateriproduk/'.$materi['id_materi'])?>" class="btn btn-sm btn-success mr-2"><i class="fa fa-book"></i> <span class="badge badge-info"><?= $materi['buku']?></span></a>
                                     <?php endif;?>
                                 </li>

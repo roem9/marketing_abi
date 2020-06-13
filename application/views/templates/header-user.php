@@ -39,6 +39,7 @@
             <a href="<?= base_url()?>marketing" class="list-group-item list-group-item-action <?php if($title == 'Profil'){echo 'bg-primary text-light';}else{echo 'bg-light text-dark';}?>"><i class="fa fa-user mr-3"></i>Profil</a>
             <a href="<?= base_url()?>marketing/materimarketing" class="list-group-item list-group-item-action <?php if($title == 'Materi Marketing'){echo 'bg-primary text-light';}else{echo 'bg-light text-dark';}?>"><i class="fa fa-book mr-3"></i>Materi Marketing</a>
             <a href="<?= base_url()?>marketing/materiproduk" class="list-group-item list-group-item-action <?php if($title == 'Materi Produk'){echo 'bg-primary text-light';}else{echo 'bg-light text-dark';}?>"><i class="fa fa-book mr-3"></i>Materi Produk</a>
+            <a href="<?= base_url()?>marketing/bahaniklan" class="list-group-item list-group-item-action <?php if($title == 'Bahan Iklan'){echo 'bg-primary text-light';}else{echo 'bg-light text-dark';}?>"><i class="fa fa-ad mr-3"></i>Bahan Iklan</a>
             <a href="<?= base_url()?>login/logout_user" class="list-group-item list-group-item-action" onclick="return confirm('Yakin akan keluar?')"><i class="fa fa-sign-out-alt mr-3"></i>Logout</a>
         </div>
     </nav>

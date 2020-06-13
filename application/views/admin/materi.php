@@ -19,6 +19,16 @@
                             <label for="judul">Judul Materi</label>
                             <input type="text" name="judul" id="judul_edit" class="form-control form-control-sm">
                         </div>
+                        <?php if($title == "Materi Produk"):?>
+                            <div class="form-group">
+                                <label for="telegram">Link Telegram</label>
+                                <textarea name="telegram" id="telegram_edit" class="form-control form-control-sm"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="link">Link Landing Page</label>
+                                <textarea name="link" id="link_edit" class="form-control form-control-sm"></textarea>
+                            </div>
+                        <?php endif;?>
                         <div class="d-flex justify-content-end">
                             <input type="submit" value="Edit Data" class="btn btn-sm btn-success" id="btnSubmitModalDetail">
                         </div>
@@ -49,6 +59,16 @@
                             <label for="judul">Judul Materi</label>
                             <input type="text" name="judul" id="judul" class="form-control form-control-sm">
                         </div>
+                        <?php if($title == "Materi Produk"):?>
+                            <div class="form-group">
+                                <label for="telegram">Link Telegram</label>
+                                <textarea name="telegram" id="telegram" class="form-control form-control-sm"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="link">Link Landing Page</label>
+                                <textarea name="link" id="link" class="form-control form-control-sm"></textarea>
+                            </div>
+                        <?php endif;?>
                         <div class="d-flex justify-content-end">
                             <input type="submit" value="Tambah Materi" class="btn btn-sm btn-primary" id="btnSubmitModalAdd">
                         </div>
@@ -121,6 +141,10 @@
             success: function(data){
                 $("#judul_edit").val(data.judul);
                 $("#id_materi_edit").val(data.id_materi);
+                <?php if($title == "Materi Produk"):?>
+                    $("#telegram_edit").val(data.telegram);
+                    $("#link_edit").val(data.link);
+                <?php endif;?>
             }
         })
     })

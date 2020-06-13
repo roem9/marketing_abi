@@ -3,6 +3,7 @@ class Marketing extends CI_CONTROLLER{
     public function __construct(){
         parent::__construct();
         $this->load->model('Materi_model');
+        $this->load->model('Main_model');
         if($this->session->userdata('status') != "login"){
             $this->session->set_flashdata('login', 'Maaf, Anda harus login terlebih dahulu');
 			redirect(base_url("login"));
@@ -50,6 +51,22 @@ class Marketing extends CI_CONTROLLER{
 
         $this->load->view("templates/header-user", $data);
         $this->load->view("marketing/materi", $data);
+        $this->load->view("templates/footer-user", $data);
+    }
+    
+    public function bahanIklan(){
+        $data['title'] = "Bahan Iklan";
+        
+        $materi = $this->Materi_model->get_all_materi_produk();
+        $data['materi'] = [];
+        foreach ($materi as $i => $materi) {
+            $data['materi'][$i] = $materi;
+        }
+
+        $data['link'] = MD5($this->session->userdata("id"));
+
+        $this->load->view("templates/header-user", $data);
+        $this->load->view("marketing/bahan-iklan", $data);
         $this->load->view("templates/footer-user", $data);
     }
     
@@ -112,6 +129,12 @@ class Marketing extends CI_CONTROLLER{
         public function get_user_by_id(){
             $id = $this->input->post("id");
             $data = $this->Materi_model->get_user_by_id($id);
+            echo json_encode($data);
+        }
+
+        public function get_produk(){
+            $id = $this->input->post("id");
+            $data = $this->Main_model->get_one("materi_produk", ["id_materi" => $id]);
             echo json_encode($data);
         }
     // get
